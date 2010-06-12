@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<script type="text/javascript">
+function performCommand(event) {
+    if (event.command === "tweet") {
+        var currentTitle = event.target.browserWindow.activeTab.title;
+        var currentURL = event.target.browserWindow.activeTab.url;
+        var newTabURL = "http://twitter.com?status=" + encodeURI(currentTitle) + " " + encodeURI(currentURL);
+        event.target.browserWindow.openTab().url = newTabURL;
+    }
+}
+
+function validateCommand(event)
+{
+    if (event.command === "tweet") {
+        event.target.disabled = !event.target.browserWindow.activeTab.url;
+    }
+}
+
+safari.application.addEventListener("command", performCommand, false);
+safari.application.addEventListener("validate", validateCommand, false);
+</script>
+<title>title tweet</title>
+<body>
+</body>
+</html>
