@@ -5,8 +5,9 @@ function performCommand(event) {
     if (event.command === "tweet") {
         var currentTitle = event.target.browserWindow.activeTab.title;
         var currentURL = event.target.browserWindow.activeTab.url;
-        var newTabURL = "http://twitter.com?status=" + encodeURI(currentTitle) + " " + encodeURI(currentURL);
-        event.target.browserWindow.openTab().url = newTabURL;
+        var newTabURL = "http://twitter.com?status=" + currentTitle + " " + currentURL;
+        //console.log(newTabURL);
+        event.target.browserWindow.openTab().url = encodeURI(newTabURL);
     }
 }
 
